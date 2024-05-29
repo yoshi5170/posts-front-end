@@ -2,6 +2,7 @@ import './App.css';
 import axios from 'axios';
 import Posts from './Posts';
 import PostCreate from './PostCreate';
+import Post from './Post';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -50,6 +51,14 @@ function App() {
         <Route
           path="/posts/create"
           element={<PostCreate/>}
+        />
+        <Route
+          path="/posts/:id"
+          element={<Post />}
+        />
+        <Route
+          path="/post/:id/edit"
+          element={<PostEdit/>}
         />
       </Routes>
     </Router>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-// import {postPost} from "./api"
+import {postPost} from "./infra/api";
 function PostCreate(){
   const [title, setTitle] = useState('');
   const navigateToPosts = useNavigate();
@@ -29,8 +29,6 @@ function PostCreate(){
     }
   };
 
-  const postPost = async (params) =>
-  axios.post("/posts", (params));
 
   return (
     <div>

@@ -3,6 +3,20 @@ import { useNavigate, useParams } from "react-router-dom";
 import {getPost, updatePost} from "./infra/api";
 
 function PostEdit(){
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const uodatedPostData = {
+        title
+      };
+      await updatePost(id, updatedPostData);
+      Navigate(`/posts/${id}`);
+    } catch (error) {
+      SpeechSynthesisErrorEvent(error);
+      setLoading(false);
+    }
+  }
   return(
     <div>
       <h2>投稿編集</h2>

@@ -2,6 +2,7 @@ import './App.css';
 import axios from 'axios';
 import Posts from './Posts';
 import PostCreate from './PostCreate';
+import PostEdit from './PostEdit';
 import Post from './Post';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';

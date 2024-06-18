@@ -45,7 +45,7 @@ function Post(){
     <div>
       <h2>投稿詳細</h2>
       <p>{post.title}</p>
-      <button>編集</button>
+      <button onClick={()=> navigate(`/posts/${id}/edit`)}>編集</button>
       <IconButton aria-label="delete" onClick={handleDelete}>
         <DeleteIcon />
       </IconButton>

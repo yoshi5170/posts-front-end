@@ -30,7 +30,7 @@ export const deletePost = async (params) =>
   });
 
 //編集
-export const postUpdate = async (params, data) =>
+export const updatePost = async (params, data) =>
   axios({
     method: "put",
     url: `/posts/${params}`,

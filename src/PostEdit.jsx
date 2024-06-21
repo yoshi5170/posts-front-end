@@ -52,6 +52,7 @@ function PostEdit(){
             <label>Title:</label>
             <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
           </div>
+          <button className="border-2 border-cyan-200 rounded-lg px-4 py-1" type="submit">更新</button>
         </form>
       )}
     </div>

@@ -10,15 +10,17 @@ function Post(){
   const [post, setPost] = useState(null);
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-  const handleDelete = async () =>{
-    try {
-      await deletePost(id);
-      navigate("/")
-    }catch (error) {
-      setError(error);
-      console.error('Error fetching data:', error);
+
+  const handleDelete = async () => {
+    if (window.confirm("削除しますか？")) {
+      try {
+        await deletePost(id);
+        navigate("/");
+      } catch (error) {
+        setError(error);
+      }
     }
-  }
+  };
 
   useEffect(() => {
     const getAPIData = async () => {

@@ -19,7 +19,6 @@ function App() {
       <Header posts={posts} setPosts={setPosts}/>
       <Posts posts={posts} setPosts={setPosts}/>
       <Routes>
-        <Route path="/" element={<Posts posts={posts} setPosts={setPosts}/>} />
         <Route
           path="/posts/create"
           element={<PostCreate/>}

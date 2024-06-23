@@ -8,7 +8,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 function Posts({posts, setPosts}){
-  // const [posts, setPosts]=useState([]);
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const getAPIData = async () => {
@@ -28,12 +27,20 @@ function Posts({posts, setPosts}){
     if (window.confirm("削除しますか？")) {
       try {
         await deletePost(id);
-        navigate("/");
+        getAPIData();
       } catch (error) {
         setError(error);
       }
     }
   };
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (!posts.length) {
+    return <div>todoがありません</div>;
+  }
 
   return (
     <aside class="fixed top-14 left-0 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 border-r-2 border-gray-200" >

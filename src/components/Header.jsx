@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import React from 'react';
 import { useState } from "react";
 import { Link } from 'react-router-dom';
@@ -7,20 +6,16 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import AddIcon from '@mui/icons-material/Add';
 import { PostCreateModal } from './PostCreateModal';
 
-export function Header ({setPosts}) {
+function Header ({setPosts}) {
   const [show, setShow] = useState(false)
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar variant="dense">
-          <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" color="inherit" component="div" sx={{ flexGrow: 1 }}>
+        <Toolbar variant="dense" className="bg-zinc-300 text-black">
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link to="/">TODOList</Link>
           </Typography>
           <IconButton

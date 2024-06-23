@@ -38,17 +38,23 @@ export function PostCreateModal ({show, setShow, setPosts}) {
 
   if(show) {
     return(
-      <div className="fixed top-0 left-0 w-full h-full bg-slate-400 opacity-75">
-        <div className="mx-auto mt-60 py-2 w-1/2 z-10 bg-white text-black text-center">
-          <p>新規作成</p>
-          <form className="my-2" onSubmit={handleSubmit}>
-            <div className="my-4">
-              <label htmlFor="title" />
-              <input className="border-2 rounded-lg border-cyan-100" type="text" value={title} onChange={handleTitleChange} id="title" required/>
+      <div className="fixed top-0 left-0 w-full h-full bg-slate-900 bg-opacity-75 z-10">
+        <div className="mx-auto mt-60 p-2 w-1/4 z-20 bg-white text-black text-center rounded-lg">
+          <p className="text-left px-2 font-bold">リストを作成</p>
+          <form className="mt-2" onSubmit={handleSubmit}>
+            <div className="flex flex-col text-left my-4 px-2 text-black w-1/2">
+              <label htmlFor="title" className="font-light text-xs">タイトル</label>
+              <input className="border-2 rounded-lg border-gray-200" type="text" value={title} onChange={handleTitleChange} id="title" required/>
             </div>
-            <button className="border-2 border-cyan-200 rounded-lg px-2" type="submit">作成</button>
+            <div className="flex justify-end mx-2 space-x-2">
+              <div>
+                <button className="rounded-lg hover:bg-gray-300 px-2 text-sm" type="submit">作成</button>
+              </div>
+              <div>
+                <button className="rounded-lg hover:bg-gray-300 px-2 text-sm" onClick={()=> setShow(false)}>キャンセル</button>
+              </div>
+            </div>
           </form>
-          <button className="border-2 border-cyan-500 rounded-lg px-2" onClick={()=> setShow(false)}>close</button>
         </div>
       </div>
     )

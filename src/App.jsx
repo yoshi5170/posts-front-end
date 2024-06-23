@@ -11,8 +11,6 @@ import { useState } from 'react';
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 
-// const API_URL = "http://localhost:3000/api/v1/posts";
-
 function App() {
   const [posts, setPosts] = useState([]);
 

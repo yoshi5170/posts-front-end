@@ -4,8 +4,7 @@ import Posts from './Posts';
 import PostCreate from './PostCreate';
 import PostEdit from './PostEdit';
 import Post from './Post';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import PostCreateModal from './components/PostCreateModal';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from './components/Header';
 import { useState } from 'react';
 
@@ -20,6 +19,7 @@ function App() {
   return (
     <Router>
       <Header posts={posts} setPosts={setPosts}/>
+      <Posts posts={posts} setPosts={setPosts}/>
       <Routes>
         <Route path="/" element={<Posts posts={posts} setPosts={setPosts}/>} />
         <Route

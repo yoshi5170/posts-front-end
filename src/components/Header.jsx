@@ -16,6 +16,7 @@ function Header({ posts, setPosts, getAPIData }) {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [message, setMessage] = useState('');
 
   const toggleDrawer = (newOpen) => () => {
     setDrawerOpen(newOpen);
@@ -31,6 +32,13 @@ function Header({ posts, setPosts, getAPIData }) {
         console.error('Error deleting post:', error);
       }
     }
+  };
+
+  const displayMessage = (msg) => {
+    setMessage(msg);
+    setTimeout(() => {
+      setMessage('');
+    }, 3000);
   };
 
   return (
@@ -61,9 +69,11 @@ function Header({ posts, setPosts, getAPIData }) {
           >
             <AddIcon />
           </IconButton>
-          <PostCreateModal show={show} setShow={setShow} setPosts={setPosts} />
+          <PostCreateModal show={show} setShow={setShow} setPosts={setPosts} displayMessage={displayMessage}/>
         </Toolbar>
       </AppBar>
+      {message && <div className="fixed top-16 left-0 w-full bg-orange-800 text-white text-center py-2">{message}</div>}
+      {/* {message && <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white text-center py-2 px-4 rounded">{message}</div>} */}
       <Posts
         posts={posts}
         setPosts={setPosts}

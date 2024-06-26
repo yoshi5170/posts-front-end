@@ -13,7 +13,15 @@ function Post({ setPosts }){
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState('');
   console.log(`id: ${id}, type: ${typeof id}`);
+
+  const displayMessage = (msg) => {
+    setMessage(msg);
+    setTimeout(() => {
+      setMessage('');
+    }, 3000);
+  };
 
   useEffect(() => {
     const getAPIData = async () => {
@@ -87,6 +95,7 @@ function Post({ setPosts }){
 
   return (
     <div className="container sm:ml-64">
+      {message && <div className="fixed top-16 left-0 w-full bg-orange-800 text-white text-center py-2">{message}</div>}
       <div className="mx-2 mt-6 p-4">
         {loading ? (
           <p>Loading...</p>
@@ -97,7 +106,7 @@ function Post({ setPosts }){
             <div className="flex items-end w-full sm:w-1/2 border-b-2 border-gray-200 mb-4">
               <p className="flex-grow italic mt-4">タイトル：{post.title}</p>
               <button onClick={() => setShow(true)} className="text-gray-500">編集</button>
-              <PostEditModal show={show} setShow={setShow} handleUpdateTitle={handleUpdateTitle}/>
+              <PostEditModal show={show} setShow={setShow} handleUpdateTitle={handleUpdateTitle} displayMessage={displayMessage}/>
             </div>
             <div className="w-full sm:w-1/2 p-2">
               {todos.length === 0 ? (

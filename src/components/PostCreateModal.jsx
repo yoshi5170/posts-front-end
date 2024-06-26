@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
 import {postPost} from "../infra/api";
-function PostCreateModal ({show, setShow, setPosts}) {
+function PostCreateModal ({show, setShow, setPosts, displayMessage}) {
   const[title, setTitle] = useState('');
   const navigate = useNavigate();
   const [error, setError] = useState(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {
@@ -27,6 +28,7 @@ function PostCreateModal ({show, setShow, setPosts}) {
         setError(null);
         navigate("/");
         addPost(newPost);
+        displayMessage('タイトルを作成しました');
       }
     } catch (error) {
       console.error(error);

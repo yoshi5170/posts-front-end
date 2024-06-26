@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {getPost, updatePost} from "../infra/api";
 
-function PostEditModal({show, setShow, handleUpdateTitle}){
+function PostEditModal({show, setShow, handleUpdateTitle, displayMessage}){
   const { id } = useParams();
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(true);
@@ -41,6 +41,7 @@ function PostEditModal({show, setShow, handleUpdateTitle}){
         setTitle("");
         setError(null);
         setLoading(false);
+        displayMessage('タイトルを編集しました');
       }
     } catch (error) {
       setError(error);
@@ -55,7 +56,7 @@ function PostEditModal({show, setShow, handleUpdateTitle}){
   if(show) {
     return(
       <div className="fixed top-0 left-0 w-full h-full bg-slate-900 bg-opacity-75 z-10">
-        <div className="mx-auto mt-60 p-2 w-1/3 z-20 bg-white text-center rounded-lg">
+        <div className="mx-auto mt-60 p-2 w-2/3 lg:w-1/3 z-20 bg-white text-center rounded-lg">
           {loading ? (
             <p>Loading...</p>
           ) : (

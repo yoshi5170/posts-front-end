@@ -11,6 +11,7 @@ import PostCreateModal from './PostCreateModal';
 import Posts from '../Posts';
 import { deletePost } from "../infra/api";
 import { useNavigate } from "react-router-dom";
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 function Header({ posts, setPosts, getAPIData }) {
   const navigate = useNavigate();
@@ -72,8 +73,13 @@ function Header({ posts, setPosts, getAPIData }) {
           <PostCreateModal show={show} setShow={setShow} setPosts={setPosts} displayMessage={displayMessage}/>
         </Toolbar>
       </AppBar>
-      {message && <div className="fixed top-16 left-0 w-full bg-orange-800 text-white text-center py-2">{message}</div>}
       {/* {message && <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white text-center py-2 px-4 rounded">{message}</div>} */}
+      {message && (
+        <div className="fixed top-16 left-1/2 transform -translate-x-1/2 w-11/12 sm:w-2/3 bg-orange-400 text-white text-center py-3 px-4 rounded-lg shadow-lg flex items-center justify-center space-x-3">
+          <ErrorOutlineIcon className="w-6 h-6 text-white" />
+          <span>{message}</span>
+        </div>
+      )}
       <Posts
         posts={posts}
         setPosts={setPosts}

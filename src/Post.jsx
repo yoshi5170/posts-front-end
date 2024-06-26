@@ -4,6 +4,7 @@ import { getPost, postTodo, updateTodo } from "./infra/api";
 import TodoFrom from "./components/TodoFrom";
 import TodoItem from "./components/TodoItem";
 import PostEditModal from  "./components/PostEditModal";
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 function Post({ setPosts }){
   const { id } = useParams();
@@ -95,7 +96,12 @@ function Post({ setPosts }){
 
   return (
     <div className="container sm:ml-64 bg-white">
-      {message && <div className="fixed top-16 left-0 w-full bg-orange-800 text-white text-center py-2">{message}</div>}
+      {message && (
+        <div className="fixed top-16 left-1/2 transform -translate-x-1/2 w-11/12 sm:w-2/3 bg-orange-400 text-white text-center py-3 px-4 rounded-lg shadow-lg flex items-center justify-center space-x-3">
+          <ErrorOutlineIcon className="w-6 h-6 text-white" />
+          <span>{message}</span>
+        </div>
+      )}
       <div className="mx-2 mt-6 p-4">
         {loading ? (
           <p>Loading...</p>

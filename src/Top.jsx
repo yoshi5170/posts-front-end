@@ -6,8 +6,8 @@ function Top({ posts }) {
   }
 
   return (
-    <div className="container ml-64">
-      <p className=" m-4 text-gray-500">サイドバーから詳細を確認できます</p>
+    <div className="container sm:ml-64">
+      <p className="m-4 text-gray-500">サイドバーから詳細を確認できます</p>
     </div>
   );
 }

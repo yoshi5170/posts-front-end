@@ -83,10 +83,10 @@ function Post({ setPosts }){
     setPosts(prevPosts => prevPosts.map(post => post.id === Number(id) ? { ...post, title: newTitle } : post));
   };
 
-  if (!post) return <div className="container ml-64">Loading...</div>;
+  if (!post) return <div className="container sm:ml-64">Loading...</div>;
 
   return (
-    <div className="container ml-64">
+    <div className="container sm:ml-64">
       <div className="mx-2 mt-6 p-4">
         {loading ? (
           <p>Loading...</p>
@@ -94,12 +94,12 @@ function Post({ setPosts }){
           <>
             {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
             <h2 className="font-bold text-lg text-gray-600">ToDoリスト詳細</h2>
-            <div className="flex items-end w-1/2 border-b-2 border-gray-200 mb-4">
+            <div className="flex items-end w-full sm:w-1/2 border-b-2 border-gray-200 mb-4">
               <p className="flex-grow italic mt-4">タイトル：{post.title}</p>
               <button onClick={() => setShow(true)} className="text-gray-500">編集</button>
               <PostEditModal show={show} setShow={setShow} handleUpdateTitle={handleUpdateTitle}/>
             </div>
-            <div className="w-1/2 p-2">
+            <div className="w-full sm:w-1/2 p-2">
               {todos.length === 0 ? (
                 <p className="text-sm text-gray-400">まだToDoは作成されていません。</p>
               ): (
@@ -110,7 +110,7 @@ function Post({ setPosts }){
                 </div>
               )}
             </div>
-            <div className="w-1/2 flex items-center mt-8 p-2">
+            <div className=" w-full sm:w-1/2 flex items-center mt-8 p-2">
               <TodoFrom text={text} handleChange={handleChange} handleSubmit={handleSubmit}/>
             </div>
           </>

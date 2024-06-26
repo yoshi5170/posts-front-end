@@ -1,20 +1,54 @@
-import React from 'react';
-import { useState } from "react";
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 import AddIcon from '@mui/icons-material/Add';
 import PostCreateModal from './PostCreateModal';
+import Posts from '../Posts';
+import { deletePost } from "../infra/api";
+import { useNavigate } from "react-router-dom";
 
-function Header ({setPosts}) {
-  const [show, setShow] = useState(false)
+function Header({ posts, setPosts, getAPIData }) {
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleDrawer = (newOpen) => () => {
+    setDrawerOpen(newOpen);
+  };
+
+  const handleDelete = async (id) => {
+    if (window.confirm("削除しますか？")) {
+      try {
+        await deletePost(id);
+        getAPIData();
+        navigate(`/`);
+      } catch (error) {
+        console.error('Error deleting post:', error);
+      }
+    }
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar variant="dense" className="bg-zinc-300 text-black">
+          <div className="sm:hidden">
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              onClick={toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+          </div>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link to="/">TODOList</Link>
           </Typography>
@@ -27,11 +61,18 @@ function Header ({setPosts}) {
           >
             <AddIcon />
           </IconButton>
-          <PostCreateModal show={show} setShow={setShow} setPosts={setPosts}/>
+          <PostCreateModal show={show} setShow={setShow} setPosts={setPosts} />
         </Toolbar>
       </AppBar>
+      <Posts
+        posts={posts}
+        setPosts={setPosts}
+        open={drawerOpen}
+        toggleDrawer={toggleDrawer}
+        handleDelete={handleDelete}
+      />
     </Box>
   );
-};
+}
 
 export default Header;

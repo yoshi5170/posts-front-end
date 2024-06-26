@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
 import {postPost} from "./infra/api";
 function PostCreate(){
   const [title, setTitle] = useState('');

@@ -2,11 +2,11 @@ import './App.css';
 import axios from 'axios';
 import Posts from './Posts';
 import PostCreate from './PostCreate';
-import PostEdit from './PostEdit';
 import Post from './Post';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from './components/Header';
 import { useState } from 'react';
+import Top from './Top';
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
@@ -19,17 +19,14 @@ function App() {
       <Header posts={posts} setPosts={setPosts}/>
       <Posts posts={posts} setPosts={setPosts}/>
       <Routes>
+      <Route path="/" element={<Top posts={posts} />} />
         <Route
           path="/posts/create"
           element={<PostCreate/>}
         />
         <Route
           path="/posts/:id"
-          element={<Post />}
-        />
-        <Route
-          path="/posts/:id/edit"
-          element={<PostEdit/>}
+          element={<Post setPosts={setPosts}/>}
         />
       </Routes>
     </Router>

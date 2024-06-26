@@ -7,7 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
-import { PostCreateModal } from './PostCreateModal';
+import PostCreateModal from './PostCreateModal';
 
 function Header ({setPosts}) {
   const [show, setShow] = useState(false)

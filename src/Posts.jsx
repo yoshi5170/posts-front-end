@@ -33,7 +33,11 @@ function Posts({ posts, setPosts, open, toggleDrawer, handleDelete }) {
   }, []);
 
   const DrawerList = (
-    <Box sx={{ width: 250, height: '100%', backgroundColor: '#e5e7eb', borderRight: '2px solid #cbd5e0' }} role="presentation" onClick={toggleDrawer(false)}>
+    <div
+      className="w-64 h-full bg-gray-200 border-r-2 border-gray-400"
+      role="presentation"
+      onClick={toggleDrawer(false)}
+    >
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
@@ -60,7 +64,7 @@ function Posts({ posts, setPosts, open, toggleDrawer, handleDelete }) {
           ))}
         </List>
       )}
-    </Box>
+    </div>
   );
 
   return (

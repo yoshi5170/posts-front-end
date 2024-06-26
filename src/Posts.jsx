@@ -33,7 +33,7 @@ function Posts({ posts, setPosts, open, toggleDrawer, handleDelete }) {
   }, []);
 
   const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+    <Box sx={{ width: 250, height: '100%', backgroundColor: '#e5e7eb', borderRight: '2px solid #cbd5e0' }} role="presentation" onClick={toggleDrawer(false)}>
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
@@ -53,7 +53,7 @@ function Posts({ posts, setPosts, open, toggleDrawer, handleDelete }) {
                     handleDelete(post.id);
                   }}
                 >
-                  <DeleteIcon />
+                  <DeleteIcon className="text-orange-800"/>
                 </IconButton>
               </ListItemButton>
             </ListItem>
@@ -65,7 +65,7 @@ function Posts({ posts, setPosts, open, toggleDrawer, handleDelete }) {
 
   return (
     <>
-      <aside className="fixed top-14 left-0 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 border-r-2 border-gray-200">
+      <aside className="fixed top-14 left-0 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 border-r-2 border-gray-400 bg-gray-200">
         <div className="h-full px-3 py-4 overflow-y-auto">
           {loading ? (
             <p>Loading...</p>
@@ -76,7 +76,7 @@ function Posts({ posts, setPosts, open, toggleDrawer, handleDelete }) {
           ) : (
             <ul className="space-y-2">
               {posts.map((post) => (
-                <div key={post.id} className="flex items-end justify-between px-2 pt-2 text-gray-900 hover:bg-gray-100 border-b-2 border-orange-800 border-opacity-50 hover:bg-gray-200">
+                <div key={post.id} className="flex items-end justify-between px-2 pt-2 text-gray-900 hover:bg-gray-300 border-b-2 border-orange-800">
                   <li className="flex-grow">
                     <p onClick={() => navigate(`/posts/${post.id}`)}>{post.title}</p>
                   </li>

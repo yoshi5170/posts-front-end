@@ -94,7 +94,7 @@ function Post({ setPosts }){
   if (!post) return <div className="container sm:ml-64">Loading...</div>;
 
   return (
-    <div className="container sm:ml-64">
+    <div className="container sm:ml-64 bg-white">
       {message && <div className="fixed top-16 left-0 w-full bg-orange-800 text-white text-center py-2">{message}</div>}
       <div className="mx-2 mt-6 p-4">
         {loading ? (
@@ -112,7 +112,7 @@ function Post({ setPosts }){
               {todos.length === 0 ? (
                 <p className="text-sm text-gray-400">まだToDoは作成されていません。</p>
               ): (
-                <div className="bg-orange-800 bg-opacity-80 rounded-md py-2">
+                <div className="bg-white rounded-md py-2">
                   {todos.map((todo) => (
                     <TodoItem todo={todo} handleCheckboxChange={handleCheckboxChange} setTodos={setTodos}/>
                   ))}

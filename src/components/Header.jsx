@@ -43,8 +43,8 @@ function Header({ posts, setPosts, getAPIData }) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar variant="dense" className="bg-zinc-300 text-black">
+      <AppBar position="static" className="bg-gray-800">
+        <Toolbar variant="dense" className="bg-gray-800 text-white">
           <div className="sm:hidden">
             <IconButton
               size="large"

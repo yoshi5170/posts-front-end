@@ -20,15 +20,25 @@ function TodoItem ({todo, handleCheckboxChange, setTodos}){
 
 
   return(
-    <div key={todo.id} className="flex items-end justify-between text-white mb-4 px-2 hover:border-b-2  hover:border-orange-800 w-full">
+    <div key={todo.id} className="flex items-center justify-between mb-4 p-4 bg-white shadow-lg rounded-lg border border-gray-200 w-full">
       <div className="flex items-center w-full">
         <div className="flex items-start flex-shrink-0">
-          <input id={`checkbox-${todo.id}`} onChange={() => handleCheckboxChange(todo.id)} type="checkbox" checked={todo.completed} className="accent-gray-600 w-4 h-4 bg-gray-100 border-gray-300 rounded focus:ring-gray-500 focus:ring-2"/>
+          <input
+            id={`checkbox-${todo.id}`}
+            onChange={() => handleCheckboxChange(todo.id)}
+            type="checkbox" checked={todo.completed}
+            className="accent-gray-800 w-5 h-5 rounded focus:ring-orange-500 focus:ring-2"
+          />
         </div>
-        <label htmlFor={`checkbox-${todo.id}`} className="ml-2 text-sm font-medium break-words whitespace-normal flex-grow">{todo.description}</label>
+        <label
+          htmlFor={`checkbox-${todo.id}`}
+          className={`ml-4 text-lg font-medium break-words whitespace-normal flex-grow ${todo.completed ? 'line-through text-gray-500' : 'text-gray-900'}`}
+        >
+          {todo.description}
+        </label>
         <div className="flex-shrink-0">
           <IconButton aria-label="delete" onClick={() => handleDelete(todo.id)}>
-            <DeleteIcon className="text-white"/>
+            <DeleteIcon className="text-orange-800"/>
           </IconButton>
         </div>
       </div>

@@ -61,6 +61,13 @@ function Post({ setPosts }){
   const postTodoFunc = async (postId, todo) => {
     try {
       const res = await postTodo(postId, todo);
+      if (res.data.status === "ERROR") {
+        const errorMessage = res.data.data.description ? res.data.data.description[0] : "An unexpected error occurred.";
+        setError(errorMessage);
+        console.log({res})
+      }else{
+        setTodos([...todos, res.data.data]);
+      }
       setTodos([...todos, res.data.data]);
     }catch (error) {
       console.error('todoの追加:', error);;

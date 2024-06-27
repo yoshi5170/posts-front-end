@@ -68,7 +68,6 @@ function Post({ setPosts }){
       }else{
         setTodos([...todos, res.data.data]);
       }
-      setTodos([...todos, res.data.data]);
     }catch (error) {
       console.error('todoの追加:', error);;
       setError("An unexpected error occurred.");
